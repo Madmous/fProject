@@ -1,10 +1,12 @@
-import {recipes } from './recipes';
+import { recipes } from './recipes';
 
-const initialState = {
+import State from './store.type';
+
+const initialState: State = {
  recipes: recipes
 }
 
-export default function store(state = initialState, action) {
+export default function store(state: State = initialState, action) {
   switch (action.type) {
     default: return state;
   }

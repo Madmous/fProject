@@ -1,30 +1,42 @@
+// @flow
+
 import _ from 'lodash';
 
-const ADD_RECIPE = 'ADD_RECIPE';
-const REMOVE_RECIPE = 'REMOVE_RECIPE';
+import * as cartTypes from './cart.type';
 
-const initialState = {
+const {
+	RemoveRecipeAction,
+	AddRecipeAction,
+	Ingredient,
+	Recipe,
+	State
+} = cartTypes;
+
+const ADD_RECIPE: string = 'ADD_RECIPE';
+const REMOVE_RECIPE: string = 'REMOVE_RECIPE';
+
+const initialState: State = {
   ingredientsByDepartment: {},
   numberOfRecipesByRecipe: {},
 
   numberOfItemsInCart: 0
 }
 
-export function addRecipe(payload) {
+export function addRecipe(payload: Recipe): AddRecipeAction {
   return {
     type: ADD_RECIPE,
     payload
   };
 }
 
-export function removeRecipe(payload) {
+export function removeRecipe(payload: Recipe): RemoveRecipeAction {
   return {
     type: REMOVE_RECIPE,
     payload
   };
 }
 
-export default function cart(state = initialState, action) {
+export default function cart(state: State = initialState, action: Recipe): State {
   switch (action.type) {
     case ADD_RECIPE: 
       return handleAddRecipe(state, action);
@@ -35,7 +47,7 @@ export default function cart(state = initialState, action) {
   }
 }
 
-function handleAddRecipe(state, action) {
+function handleAddRecipe(state: State, action: Recipe): State {
   let { numberOfItemsInCart } = state;
   numberOfItemsInCart++;
 
@@ -54,7 +66,7 @@ function handleAddRecipe(state, action) {
   };
 }
 
-function fillNumberOfRecipesByRecipe(state, recipeId) {
+function fillNumberOfRecipesByRecipe(state: State, recipeId: number): number {
   let numberOfRecipesByRecipe = {...state.numberOfRecipesByRecipe};
 
 	if (!numberOfRecipesByRecipe[recipeId]) {
@@ -69,7 +81,7 @@ function fillNumberOfRecipesByRecipe(state, recipeId) {
   return numberOfRecipesByRecipe;
 }
 
-function fillIngredientsByDepartment(state, recipe) {
+function fillIngredientsByDepartment(state: State, recipe: Recipe): Object {
   let ingredientsByDepartment = {...state.ingredientsByDepartment};
 
 	recipe.ingredients.forEach(ingredient => {
@@ -87,7 +99,7 @@ function fillIngredientsByDepartment(state, recipe) {
   return ingredientsByDepartment;
 }
 
-function addIngredientsOrUpdateQuantities(department, ingredient) {
+function addIngredientsOrUpdateQuantities(department: Array<Ingredient>, ingredient: Ingredient) {
   const ingredientIndex = _.findIndex(department, { name: ingredient.name });
 
 	if (ingredientIndex === -1) {
@@ -103,7 +115,7 @@ function addIngredientsOrUpdateQuantities(department, ingredient) {
 	}
 }
 
-function handleRemoveRecipe(state, action) {
+function handleRemoveRecipe(state: State, action: RemoveRecipeAction): State {
   let numberOfRecipesByRecipe = {...state.numberOfRecipesByRecipe};
   let ingredientsByDepartment = {...state.ingredientsByDepartment};
 	let recipe = action.payload;
@@ -142,7 +154,7 @@ function handleRemoveRecipe(state, action) {
   };
 }
 
-function updateQuantityIfIngredientPresent(department, ingredient, ingredientIndex) {
+function updateQuantityIfIngredientPresent(department: Array<Ingredient>, ingredient: Ingredient, ingredientIndex: number) {
 	if (ingredientIndex !== -1) {
 		if (ingredient.department === 'Spices') {
 			department[ingredientIndex].quantity -= 1;
@@ -152,7 +164,7 @@ function updateQuantityIfIngredientPresent(department, ingredient, ingredientInd
 	}
 }
 
-function removeIngredientIfQuantityZero(department, ingredientIndex) {
+function removeIngredientIfQuantityZero(department: Array<Ingredient>, ingredientIndex: number) {
 	const ingredientDepartment = department[ingredientIndex];
 
 	if (ingredientDepartment && ingredientDepartment.quantity === 0 ) {
@@ -160,7 +172,7 @@ function removeIngredientIfQuantityZero(department, ingredientIndex) {
 	}
 }
 
-function removeDepartmentIfEmpty(department, ingredient, ingredientsByDepartment) {
+function removeDepartmentIfEmpty(department: Array<Ingredient>, ingredient: Ingredient, ingredientsByDepartment: Object) {
 	if (department.length === 0) {
 		delete ingredientsByDepartment[ingredient.department];
 	}
