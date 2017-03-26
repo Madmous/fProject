@@ -1,0 +1,10 @@
+.PageTitle {
+  font-family: Roboto;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 36px;
+  display: inline-flex;
+  border-top: 4px solid #EAB66B;
+  margin: 0;
+  padding: 10px 0;
+}

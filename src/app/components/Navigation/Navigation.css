@@ -1,0 +1,25 @@
+.App-Nav .navbar {
+  font-family: Lato;
+  border-radius: 0px;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.App-Nav .container {
+  width: 100% !important;
+  background-color: #EAB66B;
+  padding: 0 120px !important;
+}
+
+.App-Nav-Title a {
+  color: #ffffff !important;
+}
+
+.App-Nav-Title a:hover {
+  color: black !important;
+}
+
+.App-Nav-Title {
+  background-color: #EAB66B !important;
+}

@@ -1,0 +1,76 @@
+.Cart {
+  padding: 70px 120px 50px 120px;
+}
+
+.Cart-Empty {
+  padding: 50px 15px 0 15px;
+}
+
+.Cart-Not-Empty {
+  margin-top: 40px;
+}
+
+.Cart-Products img {
+  padding: 0;
+}
+
+.Cart-Products > div {
+  padding: 20px 0;
+}
+
+.Cart-Description {
+  text-align: left;
+}
+
+.Cart-Description-ValueSelect {
+  padding: 10px 0;
+}
+
+.Cart-Description-Quantity {
+  font-weight: 400;
+  margin: 10px 0 5px 0;
+  padding-right: 10px;
+}
+
+.Cart-Description-UpdateDelete {
+  padding: 10px 0;
+}
+
+.Cart-Description-ValueSelect {
+  margin: 0;
+}
+
+.Cart-Description-ValueSelect > div {
+  padding: 0;
+}
+
+.Cart-Description-Update,
+.Cart-Description-Delete {
+  color: #fff;
+  background-color: #eab66b;
+  border-color: #eab66b;
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 10px 0;
+  width: 100%;
+  height: 100%;
+}
+
+.Cart-Ingredients {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.Cart-Ingredients ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.Cart-Ingredients ul li {
+  text-align: left;
+}
