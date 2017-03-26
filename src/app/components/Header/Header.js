@@ -29,7 +29,7 @@ export default function Header(props) {
 
   return (
     <div className="Header">
-      <h1>Recipes to list</h1>
+      <h1>Fluo eCom</h1>
       <span className="Header-Cart">
         <Link to={`/cart`}>
           <FontAwesome
